@@ -1,0 +1,24 @@
+services:
+  rentalservice:
+    container_name: rentalservice
+    build:
+      context: ./RentalService
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - conter-network
+
+  prenomservice:
+    container_name: prenomservice
+    build:
+      context: ./PrenomService
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    networks:
+      - conter-network
+
+networks:
+  conter-network:
+    driver: bridge
