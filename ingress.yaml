@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservices-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: microservices.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rentalservice
+            port:
+              number: 80
+      - path: /prenom
+        pathType: Prefix
+        backend:
+          service:
+            name: prenomservice
+            port:
+              number: 80
